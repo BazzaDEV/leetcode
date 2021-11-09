@@ -13,12 +13,12 @@ class Solution {
         // LIFO - Last In First Out
         Stack<Character> stack = new Stack<>();
         
-        //    METHOD        TIME COMPLEXITY
-        // ------------------------------------
-        // void push(E e)        O(1)
-        // E pop()               O(1)
-        // E peek()              O(1)T
-        // boolean empty()       O(1)
+        //      METHOD        TIME COMPLEXITY
+        //  -------------------------------------
+        //    void push(E elm)        O(1)
+        //    E pop()                 O(1)
+        //    E peek()                O(1)
+        //    boolean empty()         O(1)
         
         for (char c : s.toCharArray()) {
             
