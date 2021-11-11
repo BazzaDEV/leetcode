@@ -44,10 +44,10 @@ class Solution {
         
         */
 
-        int len = Integer.MAX_VALUE;
+        int minLen = Integer.MAX_VALUE;
         
         for (String s : strs) {
-            len = Math.min(s.length(), len);
+            minLen = Math.min(s.length(), minLen);
         }
 
         /*
@@ -58,7 +58,7 @@ class Solution {
         "Is the ith character in the longest common prefix?"
 
         We will check all characters up to, but not including,
-        the 'len'th character, where 'len' is the length of the
+        the 'minLen'th character, where 'minLen' is the length of the
         shortest string in 'strs', and thus the maximum length
         of the LCP in 'strs'.
 
@@ -79,33 +79,26 @@ class Solution {
              the inner & outer loops to end our search.
         
         At this point, we have finished iterating through both
-        loops. Either because all characters up to 'len' were
+        loops. Either because all characters up to 'minLen' were
         successfully considered for the LCP, or we broke early.
 
         Nonetheless, we have found the LCP - problem solved!
 
         */
         
-        boolean flag = false;
-        int i = 0;
-        while (i < len) {
-            
+        for (int i = 0; i < minLen; i++) {
+
             char c = strs[0].charAt(i);
             
             for (int j = 1; j < strs.length; j++) {
                 if (c != strs[j].charAt(i)) {
-                    flag = true;
-                    break;
+                    return strs[0].substring(0, i);
                 }
             }
             
-            if (flag) break;
-            
-            i++;
-            
         }
         
-        return strs[0].substring(0, i);
+        return strs[0].substring(0, minLen);
 
     }
 }
