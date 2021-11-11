@@ -33,13 +33,12 @@ class Solution {
                 if (stack.empty()) return false;
                 
                 // Check if it does not match the last opened parentheses
-                char lastOpened = stack.peek();
+                char lastOpened = stack.pop();
                 if ( (lastOpened == '(' && c != ')') || (lastOpened == '{' && c != '}') || (lastOpened == '[' && c != ']') )
                     return false;
                 
                 // By elimination, only possibility is that the closing parentheses is correctly closing the last opened parentheses.
-                // Thus, we have closed this pair of parentheses - the open one can be removed from the stack
-                stack.pop();
+                // Thus, we have closed this pair of parentheses.
                 
             }
             
