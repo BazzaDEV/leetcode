@@ -8,4 +8,5 @@
     "editor.quickSuggestions": false,
     "editor.suggestOnTriggerCharacters": false,
     "editor.wordBasedSuggestions": false,
+    "C_Cpp.errorSquiggles": "Disabled",
 }
