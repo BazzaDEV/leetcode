@@ -9,4 +9,7 @@
     "editor.suggestOnTriggerCharacters": false,
     "editor.wordBasedSuggestions": false,
     "C_Cpp.errorSquiggles": "Disabled",
+    "python.linting.enabled": false,
+    "python.linting.lintOnSave": false,
+    "python.languageServer": "None",
 }
