@@ -1,30 +1,18 @@
 /*
- * @lc app=leetcode id=69 lang=java
+ * @lc app=leetcode id=69 lang=cpp
  *
  * [69] Sqrt(x)
  */
 
 // @lc code=start
 class Solution {
-
-/*
-
-    sqrt 2 = 1....
-    sqrt 3 = 1.7...
-    sqrt 4 = 2
-    sqrt 9 = 3
-    sqrt 16 = 4
-    sqrt 81 = 9
-
-
- */
-
-
-    public int mySqrt(int x) {
+public:
+    int mySqrt(int x) {
 
         if (x < 2) return x;
 
         int left = 0, right = x, mid = left + (right-left)/2;
+
         while (left <= right) {
             mid = left + (right-left)/2;
             
@@ -38,7 +26,6 @@ class Solution {
         return right;
         
     }
-
-}
+};
 // @lc code=end
 
