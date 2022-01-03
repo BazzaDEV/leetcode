@@ -8,32 +8,42 @@
 class MaxStack {
 
     class Node {
-        int val;
+        int val, clock;
         Node prev, next;
 
-        public Node(int val) {
+        public Node(int val, int clock) {
             this.val = val;
+            this.clock = clock;
             prev = null;
             next = null;
         }
     }
 
-
-
-    Node head, tail, max;
+    int clock;
+    PriorityQueue<Node> q;
+    Node head, tail;
 
     public MaxStack() {
-        head = new Node(-1);
-        tail = new Node(-1);
+
+        clock = 0;
+
+        q = new PriorityQueue<>((a, b) -> {
+            if (a.val > b.val) return -1;
+            else if (a.val < b.val) return 1;
+            else if (a.clock > b.clock) return -1;
+            else if (a.clock < b.clock) return 1;
+            else return 0;
+        });
+
+        head = new Node(-1, clock++);
+        tail = new Node(-1, clock++);
 
         head.next = tail;
         tail.prev = head;
-
-        max = null;
     }
     
     public void push(int x) {
-        Node node = new Node(x);
+        Node node = new Node(x, clock++);
         Node next = head.next;
 
         head.next = node;
@@ -42,7 +52,7 @@ class MaxStack {
         next.prev = node;
         node.prev = head;
 
-        if (max == null || node.val >= max.val) max = node;
+        q.offer(node);
     }
     
     public int pop() {
@@ -51,7 +61,7 @@ class MaxStack {
         temp.prev.next = temp.next;
         temp.next.prev = temp.prev;
 
-        if (temp == max) findMax();
+        q.remove(temp);
 
         return temp.val;
     }
@@ -61,29 +71,18 @@ class MaxStack {
     }
     
     public int peekMax() {
-        return max.val;
+        return q.peek().val;
     }
     
     public int popMax() {
-        Node temp = max;
+        Node temp = q.poll();
 
         temp.prev.next = temp.next;
         temp.next.prev = temp.prev;
 
-        findMax();
-
         return temp.val;
     }
 
-    private void findMax() {
-        max = null;
-        
-        Node curr = head.next;
-        while (curr != tail) {
-            if (max == null || curr.val > max.val) max = curr;
-            curr = curr.next;
-        }
-    }
 }
 
 /**
